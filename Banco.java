@@ -54,7 +54,9 @@ public class Banco{
     }
     else{
       System.out.println("conta inexistente!");
+      return -1;
     }
+  }
   public void transferir(String origem, String destino, double valor){
     Conta conta1;
     Conta conta2;
@@ -62,8 +64,14 @@ public class Banco{
     if(conta1 != null){
       conta2 = procurar(destino);
       if(conta2 != null){
-        conta1.debitar(valor);
-        conta2.creditar(valor);
+        if(conta1.getSaldo() >= valor){        
+          conta1.debitar(valor);
+          conta2.creditar(valor);
+          
+        }
+        else{
+          System.out.println("impossivel transferir");
+        }
       }
       else{
         System.out.println("conta nao encontrada");
@@ -73,5 +81,4 @@ public class Banco{
       System.out.println("conta nao encontrada");
     }
   }
-}
 }
