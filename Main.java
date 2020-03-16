@@ -63,12 +63,14 @@ class Main {
   public static void testaBanco() {
     //escreva o código de teste aqui
     Banco banco = new Banco();
-    banco.cadastrar("123123");
-    banco.cadastrar("123124");
+    Conta conta1 = new Conta("123123");
+    Conta conta2 = new Conta("123124");
+    banco.cadastrar(conta1);
+    banco.cadastrar(conta2);
     banco.creditar("123123",500);
     banco.debitar("123123",100);
     System.out.println(banco.saldo("123123"));
-    banco.transferir("123123","123124",150);
+    banco.transferir("123123","123124",500);
     System.out.println(banco.saldo("123123"));
     System.out.println(banco.saldo("123124"));
 
